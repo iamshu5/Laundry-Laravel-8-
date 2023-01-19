@@ -1,0 +1,1 @@
+Project Laundry menggunakan Laravel 8+.
