@@ -13,6 +13,7 @@
         </div> {{-- Form Pencarian --}}
         <div class="card shadow mb-4">
             <div class="card-header py-3">
+                <h6 class="font-weight-bold text-center"> "{{ auth()->user()->outlet->nama_outlet }}"</h6>
                 <h6 class="m-0 font-weight-bold text-primary">TABEL DATA TRANSAKSI</h6>
                 <div class="d-flex justify-content-end">
                     <button type="button" class="btn btn-info shadow-sm" data-toggle="modal"
@@ -128,7 +129,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalLabel">Form Tambah Transaksi</h1>
+                    <h1 class="modal-title" id="exampleModalLabel">Form Tambah Transaksi {{ auth()->user()->outlet->nama_outlet }}</h1>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

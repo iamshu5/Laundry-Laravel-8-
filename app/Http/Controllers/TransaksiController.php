@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Auth;
 class TransaksiController extends Controller
 {
     public function index(Request $request) {
-        $DataTransaksi = Transaksi::when(!empty($request->search_transaksi), function($query) use ($request) {
+
+        $user = Auth::user();
+        $DataTransaksi = Transaksi::where('id_outlet', $user->id_outlet)->when(!empty($request->search_transaksi), function($query) use ($request) {
             $query->where('id_transaksi', 'like', '%' . $request->search_transaksi . '%')
             ->orWhere('id_outlet', 'like', '%' . $request->search_transaksi . '%')
             ->orWhere('kode_invoice', 'like', '%' . $request->search_transaksi . '%')

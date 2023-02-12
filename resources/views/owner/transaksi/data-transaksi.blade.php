@@ -90,11 +90,9 @@
                                     <td class="text-dark">{{ $dataTransaksi->dibayar }}</td>
                                     
                                     <td>
-
                                         <a class="btn btn-primary btn-sm rounded mb-1" href="{{ url('/owner/transaksi/detail-transaksi/' . $dataTransaksi->id_transaksi) }}">
                                             <i class="fa-solid fa-circle-info"></i>
                                         </a>
-
                                         {{-- <button class="btn btn-danger btn-sm rounded mb-1"
                                         onclick="confirmDelete('{{ url('admin/alumni/delete-alumni/' . $dataTransaksi->id_alumni) }}')"><i
                                             class="fas fa-trash"></i></button> --}}
