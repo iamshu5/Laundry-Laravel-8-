@@ -30,17 +30,13 @@ class LoginController extends Controller
         if(in_array($request->login_sebagai, ['admin', 'kasir']) && empty($request->id_outlet)) {
             return redirect('login')->with('alert', ['bg' => 'danger', 'message' => 'Outlet wajib diisi!']);
         }
-
-        $user = User::where('username', $request->username)->where('posisi', $request->login_sebagai)
-                ->when(!empty($request->id_outlet), function($query) use($request) {
+        $user = User::where('username', $request->username)->where('posisi', $request->login_sebagai)->when(!empty($request->id_outlet), function($query) use($request) {
                     $query->where('id_outlet', $request->id_outlet);
                 })->first();
-
         if($user === NULL || !Hash::check($request->password, $user->password) )
         {
             return redirect('login')->with('alert', ['bg' => 'danger', 'message' => 'Username atau Password tidak terdaftar!']);
         }
-
         Auth::login($user);
         return redirect($user->posisi . '/dashboard');
     }
